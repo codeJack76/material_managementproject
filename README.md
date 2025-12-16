@@ -1,6 +1,6 @@
 # DepEd LR Inventory Management System
 
-A comprehensive Learning Resources Inventory Management System for the **Department of Education - Division of Davao de Oro**. This web-based application streamlines the tracking, management, and distribution of educational materials to schools across the division.
+A comprehensive Learning Resources Inventory Management System for the **Department of Education - Division of Ilocos Norte**. This web-based application streamlines the tracking, management, and distribution of educational materials to schools across the division.
 
 ## 📋 Overview
 
@@ -25,8 +25,8 @@ The DepEd LR Inventory Management System is designed to efficiently manage the e
 - Comprehensive school database
 - Filter by municipality, school type, and congressional district
 - Track issuance history per school
-- Support for 11 municipalities in Davao de Oro
-- Congressional district mapping (District 1 & 2)
+- Support for municipalities in Ilocos Norte
+- Congressional district mapping
 
 #### 📤 **Issue Items (Material Distribution)**
 - Create and manage material issuances to schools
@@ -332,20 +332,32 @@ npm run lint         # Run ESLint
 
 ## 🏢 Department Information
 
-**Department of Education - Division of Davao de Oro**
+**Department of Education - Division of Ilocos Norte**
 
 **Municipalities Covered:**
-- Compostela
-- Laak
-- Mabini
-- Maco
-- Maragusan
-- Mawab
-- Monkayo
-- Montevista
-- Nabunturan
-- New Bataan
-- Pantukan
+- Adams
+- Bacarra
+- Badoc
+- Bangui
+- Banna
+- Batac
+- Burgos
+- Carasi
+- Currimao
+- Dingras
+- Dumalneg
+- Laoag City
+- Marcos
+- Nueva Era
+- Pagudpud
+- Paoay
+- Pasuquin
+- Piddig
+- Pinili
+- San Nicolas
+- Sarrat
+- Solsona
+- Vintar
 
 **Congressional Districts:**
 - District 1
@@ -353,7 +365,7 @@ npm run lint         # Run ESLint
 
 ## 📄 License
 
-© 2025 Department of Education - Division of Davao de Oro. All rights reserved.
+© 2025 Department of Education - Division of Ilocos Norte. All rights reserved.
 
 ## 🤝 Support
 

@@ -77,7 +77,7 @@ export function Header({ onMenuClick, isSidebarCollapsed }: HeaderProps) {
             Learning Resources Inventory
           </h1>
           <p className="text-xs text-gray-500">
-            Department of Education - Division of Davao de Oro
+            Department of Education - Division of Ilocos Norte
           </p>
         </div>
       </div>

@@ -209,7 +209,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="p-6 text-center text-sm text-gray-500">
-        <p>Department of Education - Division of Davao de Oro</p>
+        <p>Department of Education - Division of Ilocos Norte</p>
         <p className="mt-1">© 2025 All rights reserved.</p>
       </footer>
     </div>

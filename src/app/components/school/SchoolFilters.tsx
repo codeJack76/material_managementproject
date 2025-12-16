@@ -12,19 +12,31 @@ interface SchoolFiltersProps {
   }) => void;
 }
 
-// Davao de Oro municipalities
+// Ilocos Norte municipalities
 const MUNICIPALITIES = [
-  "Compostela",
-  "Laak",
-  "Mabini",
-  "Maco",
-  "Maragusan",
-  "Mawab",
-  "Monkayo",
-  "Montevista",
-  "Nabunturan",
-  "New Bataan",
-  "Pantukan",
+  "Adams",
+  "Bacarra",
+  "Badoc",
+  "Bangui",
+  "Banna",
+  "Batac",
+  "Burgos",
+  "Carasi",
+  "Currimao",
+  "Dingras",
+  "Dumalneg",
+  "Laoag City",
+  "Marcos",
+  "Nueva Era",
+  "Pagudpud",
+  "Paoay",
+  "Pasuquin",
+  "Piddig",
+  "Pinili",
+  "San Nicolas",
+  "Sarrat",
+  "Solsona",
+  "Vintar",
 ];
 
 export function SchoolFilters({ onFilterChange }: SchoolFiltersProps) {
