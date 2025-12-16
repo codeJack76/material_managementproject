@@ -113,7 +113,7 @@ import type {
   School as PrismaSchool,
   Issuance as PrismaIssuance,
   CompletedIssuance as PrismaCompletedIssuance,
-} from "@/generated/prisma";
+} from "@prisma/client";
 
 export interface MaterialWithSubject extends PrismaMaterial {
   subject: PrismaSubject;
