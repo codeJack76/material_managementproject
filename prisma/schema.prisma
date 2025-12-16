@@ -1,0 +1,158 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum EducationStage {
+  ELEMENTARY
+  JUNIOR_HIGH
+  SENIOR_HIGH
+}
+
+enum SchoolType {
+  ELEMENTARY
+  SECONDARY
+  INTEGRATED
+}
+
+// ============================================
+// MODELS
+// ============================================
+
+/// System users with role-based access
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String   @default("")
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  issuances Issuance[]
+
+  @@map("users")
+}
+
+/// Curriculum subjects for categorizing materials
+model Subject {
+  id             String         @id @default(cuid())
+  name           String
+  category       String?        // e.g., "Core", "Applied", "Specialized"
+  strand         String?        // e.g., "STEM", "ABM", "HUMSS" (for Senior High)
+  educationStage EducationStage
+
+  // Relations
+  materials Material[]
+
+  @@unique([name, educationStage])
+  @@map("subjects")
+}
+
+/// Learning Resources (LR) - educational materials in inventory
+model Material {
+  id             String         @id @default(cuid())
+  title          String
+  gradeLevel     String         // e.g., "Grade 1", "Grade 7"
+  educationStage EducationStage
+  quantity       Int            @default(0) // Available units in inventory
+  source         String?        // e.g., "DepEd Central", "Division Office", "Donated"
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  // Relations
+  subjectId          String
+  subject            Subject             @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  issuances          Issuance[]
+  completedIssuances CompletedIssuance[]
+
+  @@map("materials")
+}
+
+/// Schools that receive learning resources
+model School {
+  id                    String     @id @default(cuid())
+  schoolId              String     @unique // Official DepEd School ID
+  schoolname            String     @map("schoolname")
+  schooltype            SchoolType @map("schooltype")
+  municipality          String
+  congressionalDistrict Int        @map("congressional_district")
+  zone                  String?
+
+  // Relations
+  issuances          Issuance[]
+  completedIssuances CompletedIssuance[]
+
+  @@unique([schoolname, municipality])
+  @@map("schools")
+}
+
+/// Active material distributions to schools
+model Issuance {
+  id        String   @id @default(cuid())
+  quantity  Int
+  remarks   String?
+  issuedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  materialId String
+  material   Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+
+  schoolId String
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  completedIssuance CompletedIssuance?
+
+  @@map("issuances")
+}
+
+/// Delivered/fulfilled issuances with delivery confirmation
+model CompletedIssuance {
+  id          String   @id @default(cuid())
+  quantity    Int
+  dateIssued  DateTime
+  deliveredAt DateTime @default(now())
+  receivedBy  String?  // Name of person who received
+  remarks     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  issuanceId String   @unique
+  issuance   Issuance @relation(fields: [issuanceId], references: [id], onDelete: Cascade)
+
+  materialId String
+  material   Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+
+  schoolId String
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@map("completed_issuances")
+}
