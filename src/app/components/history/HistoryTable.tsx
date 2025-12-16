@@ -109,7 +109,7 @@ export default function HistoryTable({
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-gray-900">
-                    {issuance.school.schoolname}
+                    {issuance.school.name}
                   </div>
                   <div className="text-sm text-gray-500">
                     {issuance.school.municipality} • District {issuance.school.congressionalDistrict}

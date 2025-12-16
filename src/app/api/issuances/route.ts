@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-
-type TransactionClient = Parameters<Parameters<typeof prisma.$transaction>[0]>[0];
+import { Prisma } from "@prisma/client";
 
 // GET /api/issuances - Get all issuances with filters
 export async function GET(request: Request) {
@@ -59,7 +58,7 @@ export async function GET(request: Request) {
     ]);
 
     // Transform data to match frontend expectations (school.name, status, dateIssued)
-    const transformedIssuances = issuances.map((issuance) => ({
+    const transformedIssuances = issuances.map((issuance: typeof issuances[number]) => ({
       ...issuance,
       status: issuance.completedIssuance ? 'COMPLETED' : 'PENDING',
       dateIssued: issuance.issuedAt,
@@ -149,7 +148,7 @@ export async function POST(request: Request) {
     }
 
     // Create issuance and deduct quantity in a transaction
-    const issuance = await prisma.$transaction(async (tx: TransactionClient) => {
+    const issuance = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       // Deduct quantity from material
       await tx.material.update({
         where: { id: materialId },

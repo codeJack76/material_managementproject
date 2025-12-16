@@ -163,18 +163,6 @@ export default function IssuanceForm({
 
   return (
     <form onSubmit={handleSubmit} className="p-6 space-y-6">
-      {/* <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">Issue Material to School</h2>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="text-gray-400 hover:text-gray-600"
-        >
-          <HiOutlineX className="h-6 w-6" />
-        </button>
-      </div> */}
-
-      {/* Material Selection */}
       <div>
         <label htmlFor="material" className="block text-sm font-medium text-gray-700 mb-1">
           Material <span className="text-red-500">*</span>

@@ -119,7 +119,7 @@ export default function HistoryFilters({ filters, onFiltersChange }: HistoryFilt
             <option value="">All Schools</option>
             {schools.map((school) => (
               <option key={school.id} value={school.id}>
-                {school.schoolname}
+                {school.name}
               </option>
             ))}
           </select>

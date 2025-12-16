@@ -51,7 +51,7 @@ export default function CompleteIssuanceModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black bg-opacity-50" 
@@ -59,7 +59,7 @@ export default function CompleteIssuanceModal({
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-lg shadow-xl max-w-lg w-full p-6 z-[10000]">
+      <div className="relative bg-white rounded-lg shadow-xl max-w-lg w-full p-6 z-10000">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Complete Issuance</h3>
 
           {/* Issuance Info */}

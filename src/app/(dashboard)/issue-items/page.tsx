@@ -510,7 +510,7 @@ export default function IssueItemsPage() {
           <DeleteConfirmModal
             title="Delete Issuance"
             message="Are you sure you want to delete this issuance? The quantity will be restored to the material inventory."
-            itemName={`${selectedIssuance.material.title} - ${selectedIssuance.school.schoolname}`}
+            itemName={`${selectedIssuance.material.title} - ${selectedIssuance.school.name}`}
             onConfirm={handleDeleteIssuance}
             onCancel={() => { setShowDeleteModal(false); setSelectedIssuance(null); }}
             isDeleting={isSubmitting}
