@@ -59,33 +59,36 @@ async function main() {
   // Create sample schools
   const schools = await Promise.all([
     prisma.school.upsert({
-      where: { name_municipality: { name: "Compostela Central Elementary School", municipality: "Compostela" } },
+      where: { schoolname_municipality: { schoolname: "Compostela Central Elementary School", municipality: "Compostela" } },
       update: {},
       create: {
-        name: "Compostela Central Elementary School",
-        type: "ELEMENTARY",
+        schoolId: "SCH-001",
+        schoolname: "Compostela Central Elementary School",
+        schooltype: "ELEMENTARY",
         municipality: "Compostela",
         congressionalDistrict: 1,
         zone: "Urban",
       },
     }),
     prisma.school.upsert({
-      where: { name_municipality: { name: "Monkayo National High School", municipality: "Monkayo" } },
+      where: { schoolname_municipality: { schoolname: "Monkayo National High School", municipality: "Monkayo" } },
       update: {},
       create: {
-        name: "Monkayo National High School",
-        type: "SECONDARY",
+        schoolId: "SCH-002",
+        schoolname: "Monkayo National High School",
+        schooltype: "SECONDARY",
         municipality: "Monkayo",
         congressionalDistrict: 2,
         zone: "Urban",
       },
     }),
     prisma.school.upsert({
-      where: { name_municipality: { name: "Nabunturan Integrated School", municipality: "Nabunturan" } },
+      where: { schoolname_municipality: { schoolname: "Nabunturan Integrated School", municipality: "Nabunturan" } },
       update: {},
       create: {
-        name: "Nabunturan Integrated School",
-        type: "INTEGRATED",
+        schoolId: "SCH-003",
+        schoolname: "Nabunturan Integrated School",
+        schooltype: "INTEGRATED",
         municipality: "Nabunturan",
         congressionalDistrict: 1,
         zone: "Urban",
