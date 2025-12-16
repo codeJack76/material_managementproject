@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import {
   HiOutlineMenu,
-  HiOutlineBell,
   HiOutlineUser,
   HiOutlineCog,
   HiOutlineLogout,
@@ -84,12 +83,6 @@ export function Header({ onMenuClick, isSidebarCollapsed }: HeaderProps) {
 
       {/* Right Side */}
       <div className="flex items-center gap-3">
-        {/* Notifications */}
-        <button className="relative p-2 text-gray-600 hover:bg-gray-200 rounded-lg">
-          <HiOutlineBell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-        </button>
-
         {/* Admin Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
