@@ -6,9 +6,9 @@ export type {
   School,
   Issuance,
   CompletedIssuance,
-} from "@/generated/prisma";
+} from "@prisma/client";
 
-export { Role, EducationStage, SchoolType } from "@/generated/prisma";
+export { Role, EducationStage, SchoolType } from "@prisma/client";
 
 // ============================================
 // API Response Types
